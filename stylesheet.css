@@ -58,11 +58,6 @@
 
 }
 
-.video {
-   width: 70%;
-     
-}
-
 .tietoa-1 {
     font-family: Julius Sans One;
     width: 70%;
@@ -84,32 +79,20 @@
     font-size: 5em;
 }
 
-.resize {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-}
 
 .uutisia {
     font-size: 25px;
 }
 
 .uutiset {
-    position: sticky;
-}
-.video-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    padding-top: 25px;
-    height: 0;
+    position:sticky;
 }
 
-.video-container iframe {
-    position:absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+#videosec{
+    max-width: 560px;
+    max-height: 315px;
+    width:100%;
+    
 }
 
 .footer {
@@ -181,6 +164,7 @@
     
 }
 
+
 .dwnld {
  color:darkgray;
 }
@@ -193,7 +177,7 @@
     .tietoa-1 {
         width: 90% %;
     }
-    .video {
+    .videosec {
         width: 90% %;
     }
 }
