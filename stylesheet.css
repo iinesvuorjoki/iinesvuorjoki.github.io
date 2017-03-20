@@ -58,6 +58,10 @@
 
 }
 
+.video {
+   width: 70%;
+     
+}
 
 .tietoa-1 {
     font-family: Julius Sans One;
@@ -115,6 +119,43 @@
     height: 200px;
 }
 
+.date {
+    text-align: center;
+    font-size: 110%;
+    font-weight: bolder;
+}
+
+.picture{
+     font-family: Julius Sans One;
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 30px;
+    text-align: center;
+    background-color:#fff;
+    color: #1f1f1f;
+    padding: 20px;
+}
+
+.news{
+    font-family: Julius Sans One;
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
+    background-color:#fff;
+    color: #1f1f1f;
+    
+}
+
+.panel{
+    font-family: Julius Sans One;
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
+    background-color:#fff;
+    color: #1f1f1f;
+    padding-bottom: 20px;
+}
+
 .info {
     padding-top: 10px;
     font-family: Julius Sans One;
@@ -133,11 +174,27 @@
     padding-top: 10px;
 }
 
+.downloadlink {
+    font-family: Julius Sans One;
+    font-size: 67%;
+    font-style: italic;
+    
+}
+
+.dwnld {
+ color:darkgray;
+}
+
+.uutiset {
+    font-family: Julius Sans One;
+}
 
 @media screen and (max-width: 500px) {
     .tietoa-1 {
         width: 90% %;
-        
+    }
+    .video {
+        width: 90% %;
     }
 }
 

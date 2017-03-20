@@ -13,16 +13,16 @@
         <script src="https://use.fontawesome.com/fb9f11110a.js"></script>
     </head>
         <body id="homepage">
-            <nav class="navigation">
+            <nav id = "navigation" class="navigation">
                 <ul>
-                    <li> <a href = "file:///Users/iinesvuorjoki/Desktop/VJP-%20projekti/iinesvuorjoki.github.io/index.html"> Etusivu </a></li>
+                    <li> <a href = "#otsikko"> Etusivu </a></li>
                     <li> <a href = "http://www.tuulivoimayhdistys.fi/"> Tietoa tuulivoimasta </a></li>
                     <li> <a href = "#uutisia"> Ajankohtaista </a> </li>
                     <li> <a href = "#footer"> Yhteystiedot </a></li>
                 </ul>
             </nav>
             <header>
-                <h1 class="otsikko"> Tuulen puolesta </h1>
+                <h1 id = "otsikko" class="otsikko"> Tuulen puolesta </h1>
                     
             </header>
             <section>
@@ -42,41 +42,51 @@
                     <p> Vestibulum lacinia, velit id blandit pharetra, nunc mauris convallis mi, at congue dui diam at est. Phasellus ut dolor euismod purus efficitur hendrerit. Nullam tempus suscipit tempus. Sed aliquet ut lacus vel placerat. Fusce euismod dui ut dolor blandit, ac viverra purus lobortis. Fusce lectus ligula, tincidunt vel velit sit amet, euismod euismod nunc. Donec commodo rhoncus leo, sed sagittis nibh varius sagittis. Aliquam vitae efficitur risus. </p>
                 </article>
             </section>
+            <section> 
+            <video id="video" class="video" width="640" height="360" controls>
+                
+                <source src="tuulivoima.ogv" type="video/ogg" />
+                <source src="tuulivoima.mpg" type="video/mpg" />
+                <source src="tuulivoima.webm" type="video/webm" />
+            </video>
+            
+            </section>
+            <p class="downloadlink">	<strong class="incase" >In case the video doesn't work you can download it here as a <a href="tuulivoima.mpg" class="dwnld">MPEG</a> file or here as an <a href="tuulivoima.ogv" class="dwnld">Ogg</a> file</strong>
+            </p>
             <aside>
-            <article id= "uutisia" class="post">
+            <article id= "uutisia" class="uutiset">
                 <div id="all">
                 <h3 id="headline" class="tietoa-1"> <a class="uutisia" > Uutisia </a>
-                <h4 id="date">5.3.2017</h4>
-                <div id="content">
+                <h4 id="date" class="date">5.3.2017</h4>
+                <div id="content" class="news">
                     Vestibulum lacinia, velit id blandit pharetra, nunc mauris convallis mi, at congue dui diam at est. Phasellus ut dolor euismod purus efficitur hendrerit. Nullam tempus suscipit tempus. Sed aliquet ut lacus vel placerat. Fusce euismod dui ut dolor blandit, ac viverra purus lobortis. Fusce lectus ligula, tincidunt vel velit sit amet, euismod euismod nunc. Donec commodo rhoncus leo, sed sagittis nibh varius sagittis. Aliquam vitae efficitur risus.
                     </div>
-                    <div id="NImage" class="resize">
-                    <img src="navpalkki.jpg">
+                    <div id="NImage" class="picture">
+                    <img src="windmill.jpg" width="640px" height="360px">
                     </div>
-                    <div id="paneeli">
+                    <div id="paneeli" class="panel">
                         <div class="handle">
                             <button id="previous" type="button">
                                 <i class="fa fa-chevron-left" aria-hidden="true">
                                 
                                 </i>
-                            </button>
-                        </div>
                         <div class="handle">
                         <button id="pause" type="button">
                             <i class ="fa fa-pause" aria-hidden="true">
                             
                             </i>
-                            </button>
-                        </div>
                         <div class="handle">
                             <button id="next" type="button">
                                 <i class="fa fa-chevron-right" aria-hidden="true">
                                 
                                 </i>
                             </button>
+                            </div>
+                            </button>
+                            </div>
+                            </button>
+                            </div>
                         </div>
-                    </div>
-                <li class="uutiset"> Luetuimmat </li>
                 </h3>
                 </div>
             </article>
