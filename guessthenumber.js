@@ -9,30 +9,29 @@ var randomNumber = getRandomInteger(1, 10);
 
 
 function compareNumbers(first, second) {
-    if(first == second){
-        return true
-    }else{
-         return false
+    if (first === second) {
+        return true;
+    } else {
+        return false;
     }
 }
 
 function guessTheNumber() {
-    var number = document.getElementById("number").value
-    if(number>=1 && number<=10 && number == Int){
-        compareNumbers(number, randomNumber)
-        if(number===randomNumber){
-            window.alert("Correct!")
-            randomNumber = getRandomInteger(1,10)
-        }else{
-            window.alert("Incorrect!")
+    var number = document.getElementById("number").value;
+    if (number >= 1 && number <= 10) {
+        compareNumbers(number, randomNumber);
+        if (number === randomNumber) {
+            window.alert("Correct!");
+            randomNumber = getRandomInteger(1, 10);
+        } else {
+            window.alert("Incorrect!");
         }
-    }else{
-         window.alert("the guess has to be a number between 1 and 10")
+    } else {
+        window.alert("the guess has to be a number between 1 and 10");
         
     }
 }
-window.onload=function(){
+window.onload = function () {
     
-  document.getElementById("button").addEventListener("click", function (guessTheNumber(number)) )
+    document.getElementById("button").addEventListener("click", function (guessTheNumber( number))) 
 }
-       
