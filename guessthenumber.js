@@ -33,5 +33,7 @@ function guessTheNumber() {
 }
 window.onload = function () {
     
-    document.getElementById("button").addEventListener("click", function (guessTheNumber( number))) 
+    document.getElementById("button").addEventListener("click", function (){
+        guessTheNumber(number);
+    }); 
 }
