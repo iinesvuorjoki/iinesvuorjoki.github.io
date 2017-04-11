@@ -1,54 +1,104 @@
-window.onload {
-    
-    var canvas = documen.getElementById('canvas');
-    var ctx = canvas.getContext('2d');
-    canvas.width = 500;
-    canvas.height = 500;
-}
 
+var canvas = document.createElement("canvas");
+var ctx = canvas.getContext("2d");
+canvas.width = 500;
+canvas.height = 400;
+document.body.appendChild(canvas);
 
-var background = false;
-var backgroundImg =  new Image ();
-backgroundImg.onload = function() {
-    background = true;
+var bgReady = false;
+var bgImage = new Image();
+bgImage.onload = function() {
+    bgReady = true;
 };
-backgroundImg.src = "gamebackground.jpg";
+bgImage.src = "gamebackground.jpg";
 
-var playerI = false;
-var playerImg = new Image() {
-    playerImg.onload= function() {
-        playerI = true;
-    };
-    playerImg.src = "frame-2.png"
+var playerReady = false;
+var playerImg = new Image();
+playerImg.onload = function() {
+    playerReady = true;
+};
+
+var enemyReady = false;
+var enemyImg = new Image();
+enemyImg.onload = function(){
+    enemyReady = true;
+};
+
+var keysDown = {};
+
+addEventListener("keydown", function (e) {
+    keysDown[e.keyCode] = true;
+}, false);
+
+addEventListener("keyup", function (e) {
+    delete keysDown[e.keyCode];
+}, false);
+
+var reset = function() {
+    player.x = canvas.width / 2;
+    player.y = canvas.height / 2;
     
-    var enemyImg = new Image();
-    enemyImg.onload = function() {
-        playerI = true;
-    };
-    enemyImg.src = "spaceship.png";
-    
-    
-    var keyPressed= {};
-    
-    function drawPlayer(context) {
-        
-        var x = player.x - player.w / 2);
-        var y = player.y - player.h / 2
-        
-        if(player.direction === 0) {
-           context.drawImage(playerImg, 150, 100, 50, 50, x, y, 50, 50);
-        } else if(player.direction === 1) {
-            context.drawImage(playerImg, 200, 200, 50, 50, x, y, 50, 50);
-        } else if(player.direction === 2) {
-            context.drawImage(playerImg, 150, 0, 50, 50, x, y, 50, 50);
-        } else if(player.direction === 3) {
-            context.drawImage(playerImg, 200, 50, 50, 50, x, y, 50, 50)
-        }
+    enemy.x = 32 + (Math.random() * (canvas.width - 64));
+    enemy.y = 32 + (Math.random() * (canvas.height - 64));
+};
+
+var play = function(modifier) {
+    if (38 in keysDown) {
+        player.y -= player.speed * modifier;
+    } else if ( 40 in keysDown){
+        player.y += player.speed * modifier;
+    } else if (37 in keysDown) {
+        player.x -= player.speed * modifier;
+    } else if (39 in keysDown) {
+        player.x += player.speed * modifier;
     }
-}
+    
+    if (
+    player.x <= (enemy.x + 32)
+    && enemy.x <= (player.x + 32)
+    && player.y <= (enemy.y + 32)
+    && enemy.y <= (player.y + 32)
+    ) {
+        --playerLives;
+        reset();
+    }
+};
 
-function drawEnemy(context, enemy) {
-    var x = enemy.x - enemy.w / 2);
-    var y = enemy.y - enemy.h / 2);
-        context.drawImage(enemyImg,0 ,0, 45, 45, x, y, 50, 50);
-}
+var draw = function() {
+    if(bgReady) {
+        ctx.drawImage(bgImage, 0, 0);
+    }
+    
+    if(playerReady) {
+        ctx.drawImage(playerImg , player.x, player.y);
+    }
+    
+    if(enemyReady) {
+        ctx.drawImage(enemyImg, enemy.x, enemy.y);
+    }
+    
+    ctx.fillStyle = "rgb(250, 250, 250)";
+    ctx.font = "20px Julius Sans One";
+    ctx.textAlign = "right";
+    ctx.textBaseline ="top";
+    ctx.fillText ="Player lives: " + playerLives, 32,
+};
+    
+    var main = function() {
+        var now = Date.now();
+        var delta = now - then;
+        
+        update(delta / 1000);
+        play();
+        
+        then = now;
+        
+        requestAnimationFrame(main);
+    };
+    
+    var w = window;
+    requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame || w.msRequestAnimationFrame || w.mozRequestAnimationFrame;
+    
+    var then = Date.now();
+    reset();
+    main();
