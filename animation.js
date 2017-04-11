@@ -1,27 +1,27 @@
 window.onload = function () {
     
-    var canvas = document.createElement("canvas");
-    var ctx = canvas.getContext("2d");
+    var canvas = document.createElement("canvas"),
+        ctx = canvas.getContext("2d");
     canvas.width = 500;
     canvas.height = 400;
     document.body.appendChild(canvas);
 
-    var bgReady = false;
-    var bgImage = new Image();
+    var bgReady = false,
+        bgImage = new Image();
     bgImage.onload = function () {
         bgReady = true;
     };
     bgImage.src = "gamebackground.jpg";
 
-    var playerReady = false;
-    var playerImg = new Image();
+    var playerReady = false,
+        playerImg = new Image();
     playerImg.onload = function () {
         playerReady = true;
     };
     playerImg.src = "frame-2.png";
 
-    var enemyReady = false;
-    var enemyImg = new Image();
+    var enemyReady = false,
+        enemyImg = new Image();
     enemyImg.onload = function () {
         enemyReady = true;
     };
@@ -48,11 +48,14 @@ window.onload = function () {
     var play = function (modifier) {
             if (38 in keysDown) {
                 player.y -= player.speed * modifier;
-            } else if (40 in keysDown) {
+            }
+            if (40 in keysDown) {
                 player.y += player.speed * modifier;
-            } else if (37 in keysDown) {
+            }
+            if (37 in keysDown) {
                 player.x -= player.speed * modifier;
-            } else if (39 in keysDown) {
+            }
+            if (39 in keysDown) {
                 player.x += player.speed * modifier;
             }
     
@@ -68,7 +71,7 @@ window.onload = function () {
         };
 
     var draw = function () {
-          if (bgReady) {
+            if (bgReady) {
                 ctx.drawImage(bgImage, 0, 0);
             }
     
@@ -84,7 +87,7 @@ window.onload = function () {
             ctx.font = "20px Julius Sans One";
             ctx.textAlign = "right";
             ctx.textBaseline = "top";
-    ctx.fillText ="Player lives: " + playerLives, 32,
+            ctx.fillText = "Player lives: " + playerLives, 32,
     };
     
     var main = function() {
