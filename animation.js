@@ -94,7 +94,7 @@ window.onload = function () {
         var now = Date.now(),
             delta = now - then;
         
-        update(delta / 1000);
+        play(delta / 1000);
         play();
         
         then = now;
