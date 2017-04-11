@@ -1,7 +1,7 @@
 var enemyPic = new Image();
 enemyPic.src = "spaceship.png";
 
-function Enemy(x, y, w, h, speed, direction) {
+function enemy(x, y, w, h, speed, direction) {
     this.x = x;
     this.y = y;
     this.w = w;
@@ -12,7 +12,7 @@ function Enemy(x, y, w, h, speed, direction) {
 var enemies = [];
 
 function createEnemies(x, y, w, h, speed, direction) {
-    enemies.push(new Enemy(x, y, w, h, speed, direction));
+    enemies.push(new enemy(x, y, w, h, speed, direction));
 }
 function addMoreEnemies() {
     createEnemies(100, 100, 30, 30, 75, 1);
