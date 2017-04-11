@@ -1,48 +1,51 @@
+window.onload = function () {
+    
+    var canvas = document.createElement("canvas");
+    var ctx = canvas.getContext("2d");
+    canvas.width = 500;
+    canvas.height = 400;
+    document.body.appendChild(canvas);
 
-var canvas = document.createElement("canvas");
-var ctx = canvas.getContext("2d");
-canvas.width = 500;
-canvas.height = 400;
-document.body.appendChild(canvas);
+    var bgReady = false;
+    var bgImage = new Image();
+    bgImage.onload = function () {
+        bgReady = true;
+    };
+    bgImage.src = "gamebackground.jpg";
 
-var bgReady = false;
-var bgImage = new Image();
-bgImage.onload = function() {
-    bgReady = true;
-};
-bgImage.src = "gamebackground.jpg";
+    var playerReady = false;
+    var playerImg = new Image();
+    playerImg.onload = function () {
+        playerReady = true;
+    };
+    playerImg.src = "frame-2.png";
 
-var playerReady = false;
-var playerImg = new Image();
-playerImg.onload = function() {
-    playerReady = true;
-};
-
-var enemyReady = false;
-var enemyImg = new Image();
-enemyImg.onload = function(){
+    var enemyReady = false;
+    var enemyImg = new Image();
+    enemyImg.onload = function () {
     enemyReady = true;
-};
+    };
+    enemyImg.src = "spaceship.png"
 
-var keysDown = {};
+    var keysDown = {};
 
-addEventListener("keydown", function (e) {
+    addEventListener("keydown", function (e) {
     keysDown[e.keyCode] = true;
-}, false);
+    }, false);
 
-addEventListener("keyup", function (e) {
+    addEventListener("keyup", function (e) {
     delete keysDown[e.keyCode];
-}, false);
+    }, false);
 
-var reset = function() {
+    var reset = function() {
     player.x = canvas.width / 2;
     player.y = canvas.height / 2;
     
     enemy.x = 32 + (Math.random() * (canvas.width - 64));
     enemy.y = 32 + (Math.random() * (canvas.height - 64));
-};
+    };
 
-var play = function(modifier) {
+    var play = function(modifier) {
     if (38 in keysDown) {
         player.y -= player.speed * modifier;
     } else if ( 40 in keysDown){
@@ -62,9 +65,9 @@ var play = function(modifier) {
         --playerLives;
         reset();
     }
-};
+    };
 
-var draw = function() {
+    var draw = function() {
     if(bgReady) {
         ctx.drawImage(bgImage, 0, 0);
     }
@@ -82,7 +85,7 @@ var draw = function() {
     ctx.textAlign = "right";
     ctx.textBaseline ="top";
     ctx.fillText ="Player lives: " + playerLives, 32,
-};
+    };
     
     var main = function() {
         var now = Date.now();
@@ -101,4 +104,7 @@ var draw = function() {
     
     var then = Date.now();
     reset();
+    
     main();
+    
+})
