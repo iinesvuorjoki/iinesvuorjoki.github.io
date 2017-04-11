@@ -37,7 +37,7 @@ window.onload = function () {
         delete keysDown[e.keyCode];
     }, false);
 
-    var reset = function () {
+    var reset = function (enemy) {
             player.x = canvas.width / 2;
             player.y = canvas.height / 2;
     
@@ -45,7 +45,7 @@ window.onload = function () {
             enemy.y = 32 + (Math.random() * (canvas.height - 64));
         };
 
-    var play = function (modifier) {
+    var update = function (modifier) {
             if (38 in keysDown) {
                 player.y -= player.speed * modifier;
             }
@@ -94,7 +94,7 @@ window.onload = function () {
         var now = Date.now(),
             delta = now - then;
         
-        play(delta / 1000);
+        update(delta / 1000);
         play();
         
         then = now;
