@@ -88,7 +88,7 @@ window.onload = function () {
             ctx.textAlign = "right";
             ctx.textBaseline = "top";
             ctx.fillText = "Player lives: " + playerLives
-    };
+    }
     
     var main = function() {
         var now = Date.now(),
