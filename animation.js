@@ -4,7 +4,7 @@ window.onload = function () {
     canvas.width = 2000;
     canvas.height = 1262;
     document.body.appendChild(canvas);
-    addMoreEnemies();
+    // addMoreEnemies();
 
     var bgReady = true,
         bgImage = new Image();
@@ -26,8 +26,9 @@ window.onload = function () {
     enemyImg.onload = function () {
         enemyReady = true;
     };
-    enemyImg.src = "spaceship.png";
+    enemyImg.src = "spaceshipenemy.png";
 
+    
     
     var keysDown = {};
 
@@ -46,11 +47,11 @@ window.onload = function () {
             var x = player.x - (player.w / 2),
                 y = player.y - (player.y / 2);
         
-            player.x = canvas.width / 2;
-            player.y = canvas.height / 2;
+            player.x = 320;
+            player.y = 202;
     
-            enemy.x = 32 + (Math.random() * (canvas.width - 64));
-            enemy.y = 32 + (Math.random() * (canvas.height - 64));
+            enemy.x = Math.min(Math.max((Math.random() * 1000), 50), 520);
+            enemy.y = Math.min(Math.max((Math.random() * 1000), 70), 350);
         };
 
     
@@ -70,10 +71,12 @@ window.onload = function () {
             if (playerReady) {
                 ctx.drawImage(playerImg, player.x, player.y);
             }
-    
+       // drawAndMoveEnemies(ctx);
             if (enemyReady) {
-                ctx.drawImage(enemyImg, enemy.x, enemy.y);
+                    ctx.drawImage(enemyImg, enemy.x, enemy.y);
+                
             }
+            
         };
     
     var update = function (delta) {
