@@ -87,7 +87,7 @@ window.onload = function () {
             ctx.font = "20px Julius Sans One";
             ctx.textAlign = "right";
             ctx.textBaseline = "top";
-            ctx.fillText = "Player lives: " + playerLives, 32,
+            ctx.fillText = "Player lives: " + playerLives,
     };
     
     var main = function() {
