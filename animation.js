@@ -87,12 +87,12 @@ window.onload = function () {
             ctx.font = "20px Julius Sans One";
             ctx.textAlign = "right";
             ctx.textBaseline = "top";
-            ctx.fillText = "Player lives: " + playerLives,
+            ctx.fillText = "Player lives: " + playerLives
     };
     
     var main = function() {
-        var now = Date.now();
-        var delta = now - then;
+        var now = Date.now(),
+            delta = now - then;
         
         update(delta / 1000);
         play();
@@ -107,7 +107,6 @@ window.onload = function () {
     
     var then = Date.now();
     reset();
-    
     main();
     
-})
+};
