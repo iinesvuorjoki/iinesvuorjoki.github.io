@@ -1,7 +1,9 @@
 var player = {
-    x: 0,
-    y: 0,
-    speed: 200,
+    x: 100,
+    y: 100,
+    w: 35,
+    h: 35,
+    speed: 20,
     direction: 0
 };
 
@@ -14,8 +16,8 @@ function flyingPlayer(direction) {
     switch (direction) {
     case "left":
         player.x -= player.speed;
-        if (player.x < 20) {
-            player.x = 20;
+        if (player.x < 0) {
+            player.x = 0;
         }
         player.direction = 3;
         break;
@@ -28,16 +30,27 @@ function flyingPlayer(direction) {
         break;
     case "down":
         player.y += player.speed;
-        if (player.y > 380) {
-            player.y = 380;
+        if (player.y > 400) {
+            player.y = 400;
         }
         player.direction = 2;
         break;
+        case "up":
+            player.y -= player.speed;
+            if (player.y < 0) {
+                player.y = 0;
+            }
+            break;
     }
-};
+} //pitääkö ottaa puolipilkku pois?
 
 function changeSpeed(speed) {
     switch (speed) {
-            
+        case 1:
+            player.speed + 4;
+            break;
+        case 2:
+            player.speed = Math.max(player.speed - 4, 1);
+            break;
     }
-};
+} //pitääkö ottaa puolipilkku pois?

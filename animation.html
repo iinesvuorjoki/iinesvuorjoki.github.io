@@ -1,18 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8" />
+<html lang="fi">
+  <head>
+    <meta charset"UTF-8" />
     <meta name="author" content="Iines Vuorjoki" />
     <title> Wind Game! </title>
-    <script src="player.js" type="text/javascript"> </script>
-    <script src="enemy.js" type="text/javascript"> </script>
-    <script src = "animation.js" type ="text/javascript"> </script>
- </head>
-    
-<body> 
-<div>
-    <canvas id="canvas">
-    </canvas>
-</div>
-</body>
+    <script src="player.js" type="text/javascript"></script>
+    <script src="enemy.js" type="text/javascript"></script>
+    <script src="animation.js" type="text/javascript"></script>
+  </head>
+
+  <body>
+      <article id="game" class="section game">
+                <h2>Game</h2>
+                <button id="speed"  onclick="changeSpeed(1)">Speed up!</button>
+                <button id="slow" onclick="changeSpeed(2)">Slow down!</button>
+     </article>
+      <div>
+        <canvas id="canvas">
+           <div id="gameImage" class="picture">
+                         <img src="gamebackground.jpg" width="640px" height="360px">
+               </div>
+        </canvas>
+      </div>
+
+  </body>
 </html>

@@ -1,28 +1,27 @@
-window.onload = function () {
-    
-    var canvas = document.createElement("canvas"),
+window.onload = (function () {
+    var canvas = document.createElement('canvas'),
         ctx = canvas.getContext("2d");
     canvas.width = 500;
     canvas.height = 400;
     document.body.appendChild(canvas);
+    addMoreEnemies();
 
-    var bgReady = false,
+    var bgReady = true,
         bgImage = new Image();
     bgImage.onload = function () {
         bgReady = true;
     };
     bgImage.src = "gamebackground.jpg";
 
-    var playerReady = false,
+    var playerReady = true,
         playerImg = new Image();
     playerImg.onload = function () {
         playerReady = true;
     };
     playerImg.src = "frame-2.png";
     
-    var playerLives = 5;
 
-    var enemyReady = false,
+    var enemyReady = true,
         enemyImg = new Image();
     enemyImg.onload = function () {
         enemyReady = true;
@@ -32,15 +31,18 @@ window.onload = function () {
     
     var keysDown = {};
 
-    addEventListener("keydown", function (e) {
+    window.addEventListener("keydown", function(e) {
         keysDown[e.keyCode] = true;
+        event.preventDefault();
     }, false);
 
-    addEventListener("keyup", function (e) {
+    window.addEventListener("keyup", function(e) {
         delete keysDown[e.keyCode];
-    }, false);
+    });
 
-    var reset = function (enemyR) {
+    var i = 0;
+    
+    var reset = function() {
             
         var x = player.x - (player.w / 2),
             y = player.y - (player.y / 2);
@@ -52,18 +54,41 @@ window.onload = function () {
             enemyR.y = 32 + (Math.random() * (canvas.height - 64));
         };
 
-    var update = function (modifier) {
+    
+
+    var draw = function () {
+        
+            ctx.fillStyle = "rgb(0, 250, 250)";
+            //ctx.font = "20px Julius Sans One";
+            //ctx.textAlign = "right";
+            //ctx.textBaseline = "top";
+            //ctx.fillText = "Player lives: " + playerLives;
+    
+            if (bgReady) {
+                ctx.drawImage(bgImage, 0, 0);
+            }
+    
+            if (playerReady) {
+                ctx.drawImage(playerImg, player.x, player.y);
+            }
+    
+            if (enemyReady) {
+                ctx.drawImage(enemyImg, enemy.x, enemy.y);
+            }
+    }
+    
+    var update = function (delta) {
             if (38 in keysDown) {
-                player.y -= player.speed * modifier;
+                flyingPlayer("up");
             }
             if (40 in keysDown) {
-                player.y += player.speed * modifier;
+                flyingPlayer("down");
             }
             if (37 in keysDown) {
-                player.x -= player.speed * modifier;
+                flyingPlayer("left");
             }
             if (39 in keysDown) {
-                player.x += player.speed * modifier;
+                flyingPlayer("right");
             }
     
             if (
@@ -76,33 +101,13 @@ window.onload = function () {
                 reset();
             }
         };
-
-    var draw = function () {
-            if (bgReady) {
-                ctx.drawImage(bgImage, 0, 0);
-            }
-    
-            if (playerReady) {
-                ctx.drawImage(playerImg, player.x, player.y);
-            }
-    
-            if (enemyReady) {
-                ctx.drawImage(enemyImg, enemy.x, enemy.y);
-            }
-    
-            ctx.fillStyle = "rgb(250, 250, 250)";
-            ctx.font = "20px Julius Sans One";
-            ctx.textAlign = "right";
-            ctx.textBaseline = "top";
-            ctx.fillText = "Player lives: " + playerLives
-    }
     
     var main = function() {
         var now = Date.now(),
             delta = now - then;
         
         update(delta / 1000);
-        play();
+        draw();
         
         then = now;
         
@@ -112,8 +117,8 @@ window.onload = function () {
     var w = window;
     requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame || w.msRequestAnimationFrame || w.mozRequestAnimationFrame;
     
+    console.log(player)
     var then = Date.now();
-    reset();
     main();
     
-};
+});
