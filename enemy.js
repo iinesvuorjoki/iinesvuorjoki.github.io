@@ -1,5 +1,4 @@
-var enemyPic = new Image();
-enemyPic.src = "spaceship.png";
+
 
 function enemy(x, y, w, h, speed, direction) {
     this.x = x;

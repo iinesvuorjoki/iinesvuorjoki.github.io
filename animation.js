@@ -1,8 +1,8 @@
 window.onload = function () {
     var canvas = document.createElement('canvas'),
         ctx = canvas.getContext("2d");
-    canvas.width = 500;
-    canvas.height = 400;
+    canvas.width = 2000;
+    canvas.height = 1262;
     document.body.appendChild(canvas);
     addMoreEnemies();
 
@@ -18,7 +18,7 @@ window.onload = function () {
     playerImg.onload = function () {
         playerReady = true;
     };
-    playerImg.src = "frame-2.png";
+    playerImg.src = "bird.png";
     
 
     var enemyReady = true,

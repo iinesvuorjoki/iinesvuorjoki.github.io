@@ -1,11 +1,13 @@
 var player = {
-    x: 100,
-    y: 100,
-    w: 35,
-    h: 35,
+    x: 320,
+    y: 202,
+    w: 1,
+    h: 1,
     speed: 20,
     direction: 0
 };
+
+//67*59
 
 var playerLives = 5,
     stable = 1,
@@ -16,29 +18,29 @@ function flyingPlayer(direction) {
     switch (direction) {
     case "left":
         player.x -= player.speed;
-        if (player.x < 0) {
-            player.x = 0;
+        if (player.x < (0+30)) {
+            player.x = (0+30);
         }
         player.direction = 3;
         break;
     case "right":
         player.x += player.speed;
-        if (player.x > 400) {
-            player.x = 400;
+        if (player.x > (640 - 37)) {
+            player.x = (640-37);
         }
         player.direction = 1;
         break;
     case "down":
         player.y += player.speed;
-        if (player.y > 400) {
-            player.y = 400;
+        if (player.y > (404 -22)) {
+            player.y = (404-22);
         }
         player.direction = 2;
         break;
     case "up":
         player.y -= player.speed;
-        if (player.y < 0) {
-            player.y = 0;
+        if (player.y < (0+23)) {
+            player.y = (0+23);
         }
         break;
     }
