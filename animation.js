@@ -23,67 +23,67 @@ window.onload = function () {
     var enemyReady = false;
     var enemyImg = new Image();
     enemyImg.onload = function () {
-    enemyReady = true;
+        enemyReady = true;
     };
-    enemyImg.src = "spaceship.png"
+    enemyImg.src = "spaceship.png";
 
     var keysDown = {};
 
     addEventListener("keydown", function (e) {
-    keysDown[e.keyCode] = true;
+        keysDown[e.keyCode] = true;
     }, false);
 
     addEventListener("keyup", function (e) {
-    delete keysDown[e.keyCode];
+        delete keysDown[e.keyCode];
     }, false);
 
-    var reset = function() {
-    player.x = canvas.width / 2;
-    player.y = canvas.height / 2;
+    var reset = function () {
+            player.x = canvas.width / 2;
+            player.y = canvas.height / 2;
     
-    enemy.x = 32 + (Math.random() * (canvas.width - 64));
-    enemy.y = 32 + (Math.random() * (canvas.height - 64));
-    };
+            enemy.x = 32 + (Math.random() * (canvas.width - 64));
+            enemy.y = 32 + (Math.random() * (canvas.height - 64));
+        };
 
-    var play = function(modifier) {
-    if (38 in keysDown) {
-        player.y -= player.speed * modifier;
-    } else if ( 40 in keysDown){
-        player.y += player.speed * modifier;
-    } else if (37 in keysDown) {
-        player.x -= player.speed * modifier;
-    } else if (39 in keysDown) {
-        player.x += player.speed * modifier;
-    }
+    var play = function (modifier) {
+            if (38 in keysDown) {
+                player.y -= player.speed * modifier;
+            } else if (40 in keysDown) {
+                player.y += player.speed * modifier;
+            } else if (37 in keysDown) {
+                player.x -= player.speed * modifier;
+            } else if (39 in keysDown) {
+                player.x += player.speed * modifier;
+            }
     
-    if (
-    player.x <= (enemy.x + 32)
-    && enemy.x <= (player.x + 32)
-    && player.y <= (enemy.y + 32)
-    && enemy.y <= (player.y + 32)
-    ) {
-        --playerLives;
-        reset();
-    }
-    };
+            if (
+                player.x <= (enemy.x + 32)
+                    && enemy.x <= (player.x + 32)
+                    && player.y <= (enemy.y + 32)
+                    && enemy.y <= (player.y + 32)
+            ) {
+                --playerLives;
+                reset();
+            }
+        };
 
-    var draw = function() {
-    if(bgReady) {
-        ctx.drawImage(bgImage, 0, 0);
-    }
+    var draw = function () {
+          if (bgReady) {
+                ctx.drawImage(bgImage, 0, 0);
+            }
     
-    if(playerReady) {
-        ctx.drawImage(playerImg , player.x, player.y);
-    }
+            if (playerReady) {
+                ctx.drawImage(playerImg, player.x, player.y);
+            }
     
-    if(enemyReady) {
-        ctx.drawImage(enemyImg, enemy.x, enemy.y);
-    }
+            if (enemyReady) {
+                ctx.drawImage(enemyImg, enemy.x, enemy.y);
+            }
     
-    ctx.fillStyle = "rgb(250, 250, 250)";
-    ctx.font = "20px Julius Sans One";
-    ctx.textAlign = "right";
-    ctx.textBaseline ="top";
+            ctx.fillStyle = "rgb(250, 250, 250)";
+            ctx.font = "20px Julius Sans One";
+            ctx.textAlign = "right";
+            ctx.textBaseline = "top";
     ctx.fillText ="Player lives: " + playerLives, 32,
     };
     
