@@ -19,6 +19,8 @@ window.onload = function () {
         playerReady = true;
     };
     playerImg.src = "frame-2.png";
+    
+    var playerLives = 5;
 
     var enemyReady = false,
         enemyImg = new Image();
@@ -27,6 +29,7 @@ window.onload = function () {
     };
     enemyImg.src = "spaceship.png";
 
+    
     var keysDown = {};
 
     addEventListener("keydown", function (e) {
@@ -37,12 +40,16 @@ window.onload = function () {
         delete keysDown[e.keyCode];
     }, false);
 
-    var reset = function (enemy) {
+    var reset = function (enemyR) {
+            
+        var x = player.x - (player.w / 2),
+            y = player.y - (player.y / 2);
+        
             player.x = canvas.width / 2;
             player.y = canvas.height / 2;
     
-            enemy.x = 32 + (Math.random() * (canvas.width - 64));
-            enemy.y = 32 + (Math.random() * (canvas.height - 64));
+            enemyR.x = 32 + (Math.random() * (canvas.width - 64));
+            enemyR.y = 32 + (Math.random() * (canvas.height - 64));
         };
 
     var update = function (modifier) {
