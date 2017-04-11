@@ -65,7 +65,7 @@ window.onload = (function () {
             //ctx.fillText = "Player lives: " + playerLives;
     
             if (bgReady) {
-                ctx.drawImage(bgImage, 0, 0);
+                ctx.drawImage(bgImage, 600px, 600px);
             }
     
             if (playerReady) {
