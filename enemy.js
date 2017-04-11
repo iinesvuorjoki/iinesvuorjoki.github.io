@@ -1,7 +1,7 @@
 var enemyPic = new Image();
 enemyPic.src = "spaceship.png";
 
-function enemy(x,y,w,h,speed,direction){
+function Enemy(x, y, w, h, speed, direction) {
     this.x = x;
     this.y = y;
     this.w = w;
@@ -11,23 +11,19 @@ function enemy(x,y,w,h,speed,direction){
 }
 var enemies = [];
 
-function createEnemies(x,y,w,h,speed,direction) {
-    enemies.push(new enemy(x,y,w,h,speed,direction));
-};
+function createEnemies(x, y, w, h, speed, direction) {
+    enemies.push(new Enemy(x, y, w, h, speed, direction));
+}
 function addMoreEnemies() {
-    var xcor = 100,
-        ycor = 100,
-        wid = 50,
-        hei = 50,
-        spd = 75,
-        dir = 1;
-    for(0 until 5) {
-        createEnemies(xcor,ycor,wid,hei,spd,dir)
-        x += 50
-        y += 50
-        dir += 1
-    }
-};
+    createEnemies(100, 100, 30, 30, 75, 1);
+    createEnemies(150, 150, 30, 30, 75, 2);
+    createEnemies(200, 200, 30, 30, 75, 3);
+    createEnemies(250, 250, 30, 30, 75, 4);
+    createEnemies(300, 300, 30, 30, 75, 1);
+    createEnemies(350, 350, 30, 30, 75, 2);
+    createEnemies(400, 400, 30, 30, 75, 3);
+    createEnemies(450, 450, 30, 30, 75, 4);
+}
 
 /*for (i = 0; i < 8; i++ ) {
         var enemy = {
@@ -39,6 +35,8 @@ function addMoreEnemies() {
             direction: 2
         };
 */
+
+var i = 0;
 
 function flyingEnemies() {
     for (i = 0; i < enemies.length[i]; i++) {
@@ -59,14 +57,7 @@ function flyingEnemies() {
         
     }
     
-    var stable = 1,
-        moving = 2;
     
-    function changeSpeed(speed) {
-        switch (speed) {
-                
-        }
-    };
     
 }
 

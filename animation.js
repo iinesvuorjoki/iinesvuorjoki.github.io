@@ -1,4 +1,4 @@
-window.onload = (function () {
+window.onload = function () {
     var canvas = document.createElement('canvas'),
         ctx = canvas.getContext("2d");
     canvas.width = 500;
@@ -31,27 +31,26 @@ window.onload = (function () {
     
     var keysDown = {};
 
-    window.addEventListener("keydown", function(e) {
+    window.addEventListener("keydown", function (e) {
         keysDown[e.keyCode] = true;
         event.preventDefault();
     }, false);
 
-    window.addEventListener("keyup", function(e) {
+    window.addEventListener("keyup", function (e) {
         delete keysDown[e.keyCode];
     });
 
-    var i = 0;
-    
-    var reset = function() {
+    var i = 0,
+        reset = function () {
             
-        var x = player.x - (player.w / 2),
-            y = player.y - (player.y / 2);
+            var x = player.x - (player.w / 2),
+                y = player.y - (player.y / 2);
         
             player.x = canvas.width / 2;
             player.y = canvas.height / 2;
     
-            enemyR.x = 32 + (Math.random() * (canvas.width - 64));
-            enemyR.y = 32 + (Math.random() * (canvas.height - 64));
+            enemy.x = 32 + (Math.random() * (canvas.width - 64));
+            enemy.y = 32 + (Math.random() * (canvas.height - 64));
         };
 
     
@@ -65,7 +64,7 @@ window.onload = (function () {
             //ctx.fillText = "Player lives: " + playerLives;
     
             if (bgReady) {
-                ctx.drawImage(bgImage, 600px, 600px);
+                ctx.drawImage(bgImage, 30, 30);
             }
     
             if (playerReady) {
@@ -75,7 +74,7 @@ window.onload = (function () {
             if (enemyReady) {
                 ctx.drawImage(enemyImg, enemy.x, enemy.y);
             }
-    }
+        };
     
     var update = function (delta) {
             if (38 in keysDown) {
@@ -102,7 +101,7 @@ window.onload = (function () {
             }
         };
     
-    var main = function() {
+    var main = function () {
         var now = Date.now(),
             delta = now - then;
         
@@ -117,8 +116,8 @@ window.onload = (function () {
     var w = window;
     requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame || w.msRequestAnimationFrame || w.mozRequestAnimationFrame;
     
-    console.log(player)
+    console.log(player);
     var then = Date.now();
     main();
     
-});
+};

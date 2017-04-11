@@ -35,22 +35,22 @@ function flyingPlayer(direction) {
         }
         player.direction = 2;
         break;
-        case "up":
-            player.y -= player.speed;
-            if (player.y < 0) {
-                player.y = 0;
-            }
-            break;
+    case "up":
+        player.y -= player.speed;
+        if (player.y < 0) {
+            player.y = 0;
+        }
+        break;
     }
 } //pitääkö ottaa puolipilkku pois?
 
 function changeSpeed(speed) {
     switch (speed) {
-        case 1:
-            player.speed + 4;
-            break;
-        case 2:
-            player.speed = Math.max(player.speed - 4, 1);
-            break;
+    case 1:
+        player.speed = player.speed + 4;
+        break;
+    case 2:
+        player.speed = Math.max(player.speed - 4, 1);
+        break;
     }
 } //pitääkö ottaa puolipilkku pois?
