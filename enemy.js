@@ -1,5 +1,6 @@
 var enemies = [];
 
+
 var enemy = {
     x: Math.min(Math.max((Math.random() * 1000), 50), 520),
     y: Math.min(Math.max((Math.random() * 1000), 70), 350),
@@ -10,37 +11,29 @@ var enemy = {
 };
 
 function addEnemies() {
-    return enemy();
+    enemies.push(enemy());
 }
-
 
 //67*59
 
-var stable = 1,
-    right = 2,
-    left = 3,
-    i = 0;
-
-for (i = 0; i < enemies[i]; i++) {
-    enemies.push(addEnemies());
-}
 
 function flyingEnemy() {
-    for (i = 0; i < enemies[i]; i++) {
-        var flyEnemy = enemies[i];
-        if (flyEnemy.x >= 350) {
-            flyEnemy.direction = 2;
+    for (var i in enemies) {
+        switch (enemies[i].direction) {
+            case 1:
+                enemies[i].x -= enemies[i].speed;
+                if (enemies[i].x >= 350) {
+                    enemies[i].direction = 2;
+                }
+                break;
+            case 2:
+                enemies[i].x += enemies[i].speed;
+                if (enemies[i].x <= 50) {
+                    enemies[i].direction = 1;
+                }
         }
-        if (flyEnemy.x <= 50) {
-            flyEnemy.direction = 1;
-        }
-        if (flyEnemy.direction === 1) {
-            flyEnemy.x = flyEnemy.x + flyEnemy.speed;
-        }
-        if (flyEnemy.direction === 2) {
-            flyEnemy.x = flyEnemy.x - flyEnemy.speed;
-        }
-    }
+        
+}
 }
 
 function changeSpeed(speed) {

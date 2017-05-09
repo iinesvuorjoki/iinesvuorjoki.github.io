@@ -72,9 +72,10 @@ window.onload = function () {
                 ctx.drawImage(playerImg, player.x, player.y);
             }
        // drawAndMoveEnemies(ctx);
-            if (enemyReady) {
+           if (enemyReady) {
+               for (i = 0; i < 5; i++){
                     ctx.drawImage(enemyImg, enemy.x, enemy.y);
-                
+               }
             }
             
         };
